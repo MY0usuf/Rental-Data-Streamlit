@@ -5,8 +5,11 @@ import os
 import datetime
 
 def extract_date(filename):
-    date_str = filename.split("_")[1].split(".")[0]
-    return datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
+    if " till " in filename:
+        date_str = filename.split(" till ")[0].replace(" ", "")
+    else:
+        date_str = filename.split(".")[0].replace(" ", "")
+    return datetime.datetime.strptime(date_str, "%Y-%m").date()
 
 rental_dir = os.getcwd() + '\\rental_csv'
 
@@ -24,6 +27,10 @@ st.markdown(
 )
 @st.cache_data
 def get_data():
+
+    files = os.listdir('rental_csv')
+    dates = [extract_date(filename) for filename in files if "-" in filename]
+
     col_names = ['Ejari Contract Number','Registration Date','Start Date','End Date','Property ID','Version','Area','Contract Amount','Annual Amount','Is Free Hold?','Property Size (sq.m)','Property Type','Property Sub Type','Number of Rooms','Usage','Nearest Metro','Nearest Mall',	'Nearest Landmark',	'Parking','No of Units','Master Project','Project']
 
     dtypes = {'Ejari Contract Number':str,'Property ID':str,'Version':str,'Area':str,'Contract Amount':float,'Annual Amount':float,'Is Free Hold?':str,'Property Size (sq.m)':float,'Property Type':str,'Property Sub Type':str,'Number of Rooms':str,'Usage':str,'Nearest Metro':str,'Nearest Mall':str,'Nearest Landmark':str,'Parking':str,'No of Units':str,'Master Project':str,'Project':str}
