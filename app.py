@@ -69,8 +69,6 @@ def get_data():
     return raw_data
 
 
-
-
 df = get_data().reset_index(drop=True)
 
 '# Rental Data'
