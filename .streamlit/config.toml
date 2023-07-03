@@ -1,6 +1,6 @@
 [server]
 headless = true
-maxMessageSize = 300
+maxMessageSize = 500
 [theme]
 primaryColor="#000001"
 backgroundColor="#fefeff"
