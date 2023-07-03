@@ -1,6 +1,7 @@
 [server]
 headless = true
-maxMessageSize = 500
+maxMessageSize = 750
+port = 8501
 [theme]
 primaryColor="#000001"
 backgroundColor="#fefeff"
