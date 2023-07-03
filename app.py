@@ -25,7 +25,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-@st.cache_data
+@st.cache_data(ttl=10800)
 def get_data():
 
     files = os.listdir('rental_csv')
