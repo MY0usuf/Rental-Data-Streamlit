@@ -75,7 +75,7 @@ def get_data():
 
 df = get_data().reset_index(drop=True)
 
-'# Transaction Data'
+'# Rental Data'
 # Forms can be declared using the 'with' syntax
 
 # Getting the Unique Projects,Areas from the data and adding them onto a single variable
