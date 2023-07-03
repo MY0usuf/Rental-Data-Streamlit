@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import os
 import datetime
-import time
 
 def extract_date(filename):
     date_str = filename.split("_")[1].split(".")[0]
@@ -31,7 +30,6 @@ def get_data():
 
     values = {'Ejari Contract Number':0,'Registration Date':0,'Start Date':0,'End Date':0,'Property ID':'0','Version':'None','Area':'None','Contract Amount':0,'Annual Amount':0,'Is Free Hold?':'None','Property Size (sq.m)':0,'Property Size (sq.ft)':0,'Amount (sq.m)':0,'Amount (sq.ft)':0,'Property Type':'None','Property Sub Type':'None','Number of Rooms':'None','Usage':'None','Parking':'None','No of Units':'None','Master Project':'None','Project':'None'}
 
-    time.sleep(5)
     empty_list = []
 
     for filename in os.listdir('rental_csv'):
