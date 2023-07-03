@@ -1,5 +1,4 @@
 pandas
 streamlit
-streamlit-autorefresh
 numpy
 datetime
