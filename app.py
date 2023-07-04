@@ -7,6 +7,9 @@ import datetime
 def extract_date(filename):
     if " till " in filename:
         date_str = filename.split(" till ")[0].replace(" ", "")
+    elif '_' in filename:
+        date_str = filename.split("_")[1].split(".")[0]
+        return datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
     else:
         date_str = filename.split(".")[0].replace(" ", "")
     return datetime.datetime.strptime(date_str, "%Y-%m").date()
@@ -29,7 +32,7 @@ st.markdown(
 def get_data():
 
     files = os.listdir('rental_csv')
-    dates = [extract_date(filename) for filename in files if "-" in filename]
+    dates = [extract_date(filename) for filename in files]
 
     col_names = ['Ejari Contract Number','Registration Date','Start Date','End Date','Property ID','Version','Area','Contract Amount','Annual Amount','Is Free Hold?','Property Size (sq.m)','Property Type','Property Sub Type','Number of Rooms','Usage','Nearest Metro','Nearest Mall',	'Nearest Landmark',	'Parking','No of Units','Master Project','Project']
 
@@ -95,8 +98,8 @@ property_type_list = ['All','Land','Unit','Building']
 version_list = ['All','New','Renewal']
 # setting the usage type into a list
 usage_type_list = ['All','Residential','Commercial','Other']
-# setting the default date to 01 january 2001
-start_date_default = datetime.datetime(2001, 1, 1).date()
+# setting the default date to 01 january 2022
+start_date_default = datetime.datetime(2022, 1, 1).date()
 
 with st.form(key='my_form', clear_on_submit = True):
     project_area = st.selectbox('Search Project or Area', projects_areas, key='project+area')
@@ -146,7 +149,7 @@ with st.form(key='my_form', clear_on_submit = True):
 
 
         if start_date:
-            start_date = datetime.datetime.combine(start_date, datetime.datetime.min.time())
+            #start_date = datetime.datetime.combine(start_date, datetime.datetime.min.time())
             mask &= df['Start Date'] >= start_date
 
 
