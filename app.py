@@ -7,7 +7,7 @@ import datetime
 def extract_date(filename):
     if " till " in filename:
         date_str = filename.split(" till ")[0].replace(" ", "")
-    else if '_' in filename:
+    elif '_' in filename:
         date_str = filename.split("_")[1].split(".")[0]
     else:
         date_str = filename.split(".")[0].replace(" ", "")
