@@ -7,6 +7,8 @@ import datetime
 def extract_date(filename):
     if " till " in filename:
         date_str = filename.split(" till ")[0].replace(" ", "")
+    else if '_' in filename:
+        date_str = filename.split("_")[1].split(".")[0]
     else:
         date_str = filename.split(".")[0].replace(" ", "")
     return datetime.datetime.strptime(date_str, "%Y-%m").date()
@@ -29,7 +31,7 @@ st.markdown(
 def get_data():
 
     files = os.listdir('rental_csv')
-    dates = [extract_date(filename) for filename in files if "-" in filename]
+    dates = [extract_date(filename) for filename in files if "-" in filename or if '_' in filename]
 
     col_names = ['Ejari Contract Number','Registration Date','Start Date','End Date','Property ID','Version','Area','Contract Amount','Annual Amount','Is Free Hold?','Property Size (sq.m)','Property Type','Property Sub Type','Number of Rooms','Usage','Nearest Metro','Nearest Mall',	'Nearest Landmark',	'Parking','No of Units','Master Project','Project']
 
