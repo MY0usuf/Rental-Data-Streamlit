@@ -9,7 +9,7 @@ def extract_date(filename):
         date_str = filename.split(" till ")[0].replace(" ", "")
     elif '_' in filename:
         date_str = filename.split("_")[1].split(".")[0]
-        return datetime.datetime.strptime(date_str, %Y-%m-%d).date()
+        return datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
     else:
         date_str = filename.split(".")[0].replace(" ", "")
     return datetime.datetime.strptime(date_str, "%Y-%m").date()
