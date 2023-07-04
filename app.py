@@ -31,7 +31,7 @@ st.markdown(
 def get_data():
 
     files = os.listdir('rental_csv')
-    dates = [extract_date(filename) for filename in files if "-" in filename or if '_' in filename]
+    dates = [extract_date(filename) for filename in files]
 
     col_names = ['Ejari Contract Number','Registration Date','Start Date','End Date','Property ID','Version','Area','Contract Amount','Annual Amount','Is Free Hold?','Property Size (sq.m)','Property Type','Property Sub Type','Number of Rooms','Usage','Nearest Metro','Nearest Mall',	'Nearest Landmark',	'Parking','No of Units','Master Project','Project']
 
