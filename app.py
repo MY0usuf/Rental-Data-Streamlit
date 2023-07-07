@@ -150,7 +150,7 @@ with st.form(key='my_form', clear_on_submit = True):
 
         if start_date:
             #start_date = datetime.datetime.combine(start_date, datetime.datetime.min.time())
-            mask &= df['Start Date'] >= start_date
+            mask &= df['Registration Date'] >= start_date
 
 
         matching_rows = df[mask].reset_index(drop=True)
