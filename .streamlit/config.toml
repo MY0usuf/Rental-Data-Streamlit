@@ -1,5 +1,5 @@
 [server]
-maxMessageSize = 300
+maxMessageSize = 600
 [theme]
 primaryColor="#000001"
 backgroundColor="#fefeff"
