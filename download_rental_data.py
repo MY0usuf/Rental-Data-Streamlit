@@ -48,6 +48,7 @@ def download_rental(base_url,download_dir,date):
     year = date.strftime('%Y')
 
     driver.get(base_url)
+    time.sleep(1.5)
     driver.implicitly_wait(1.5) 
 
     # Switching the navbar to Rents tab if necessary
@@ -118,3 +119,5 @@ print(len(missing_dates))
 for date in missing_dates:
         print(date.strftime("%Y-%m-%d"))
         download_rental(base_url,download_dir,date)
+
+#quit()
