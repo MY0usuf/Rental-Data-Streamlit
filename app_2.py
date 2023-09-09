@@ -68,12 +68,9 @@ def get_data():
     raw_data['Project'] = raw_data['Project'].str.title()
     raw_data['Area'] = raw_data['Area'].str.title()
 
-    raw_data['Registration Date'] = pd.to_datetime(raw_data['Registration Date'], errors='coerce').dt.normalize()
+    raw_data['Registration Date'] = pd.to_datetime(raw_data['Registration Date'], errors='coerce').dt.date
     #raw_data['Start Date'] = (raw_data['Start Date']).dt.date
-    #raw_data['End Date'] = pd.to_datetime(raw_data['End Date']).dt.date
-    print(type(raw_data['Registration Date']))
-    print(type(raw_data['End Date']))
-    print(raw_data['Registration Date'])
+    #raw_data['End Date'] = (raw_data['End Date']).dt.date
 
     raw_data.sort_values(by='Registration Date', inplace = True)
 
