@@ -38,7 +38,7 @@ def get_data():
 
     dtypes = {'Ejari Contract Number':str,'Property ID':str,'Version':str,'Area':str,'Contract Amount':float,'Annual Amount':float,'Is Free Hold?':str,'Property Size (sq.m)':float,'Property Type':str,'Property Sub Type':str,'Number of Rooms':str,'Usage':str,'Nearest Metro':str,'Nearest Mall':str,'Nearest Landmark':str,'Parking':str,'No of Units':str,'Master Project':str,'Project':str}
 
-    values = {'Ejari Contract Number':0,'Registration Date':0,'Start Date':0,'End Date':0,'Property ID':'0','Version':'None','Area':'None','Contract Amount':0,'Annual Amount':0,'Is Free Hold?':'None','Property Size (sq.m)':0,'Property Size (sq.ft)':0,'Amount (sq.m)':0,'Amount (sq.ft)':0,'Property Type':'None','Property Sub Type':'None','Number of Rooms':'None','Usage':'None','Parking':'None','No of Units':'None','Master Project':'None','Project':'None'}
+    values = {'Ejari Contract Number':0,'Registration Date':"2023-01-01",'Start Date':"2023-01-01",'End Date':"2023-01-01",'Property ID':'0','Version':'None','Area':'None','Contract Amount':0,'Annual Amount':0,'Is Free Hold?':'None','Property Size (sq.m)':0,'Property Size (sq.ft)':0,'Amount (sq.m)':0,'Amount (sq.ft)':0,'Property Type':'None','Property Sub Type':'None','Number of Rooms':'None','Usage':'None','Parking':'None','No of Units':'None','Master Project':'None','Project':'None'}
 
     empty_list = []
 
@@ -68,12 +68,11 @@ def get_data():
     raw_data['Project'] = raw_data['Project'].str.title()
     raw_data['Area'] = raw_data['Area'].str.title()
 
-    raw_data['Registration Date'] = pd.to_datetime(raw_data['Registration Date'], errors='coerce').dt.normalize()
+    raw_data['Registration Date'] = pd.to_datetime(raw_data['Registration Date']).dt.date
+    raw_data['Start Date'] = pd.to_datetime(raw_data['Start Date']).dt.date
+    raw_data['End Date'] = pd.to_datetime(raw_data['End Date']).dt.date
     #raw_data['Start Date'] = (raw_data['Start Date']).dt.date
     #raw_data['End Date'] = pd.to_datetime(raw_data['End Date']).dt.date
-    print(type(raw_data['Registration Date']))
-    print(type(raw_data['End Date']))
-    print(raw_data['Registration Date'])
 
     raw_data.sort_values(by='Registration Date', inplace = True)
 
